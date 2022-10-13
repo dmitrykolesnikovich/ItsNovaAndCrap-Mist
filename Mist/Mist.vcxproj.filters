@@ -7,6 +7,12 @@
     <Filter Include="Mist\Events">
       <UniqueIdentifier>{46B8D2DD-B26D-4BD3-3B62-45AAA71642D7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mist\Platform">
+      <UniqueIdentifier>{36E97FB9-A2A9-FBEF-6BE4-446DD76340CC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mist\Platform\Windows">
+      <UniqueIdentifier>{7069A623-DCD5-611E-A5C9-F97B11F58386}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Mist.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Mist\Log.h">
       <Filter>Mist</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mist\Platform\Windows\WindowsWindow.h">
+      <Filter>Mist\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Window.h">
+      <Filter>Mist</Filter>
+    </ClInclude>
     <ClInclude Include="src\mstpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Mist\Log.cpp">
       <Filter>Mist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mist\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Mist\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\mstpch.cpp" />
   </ItemGroup>

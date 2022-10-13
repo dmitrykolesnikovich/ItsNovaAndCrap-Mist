@@ -11,6 +11,11 @@ workspace "Mist"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Mist/vendor/GLFW/include"
+
+include "Mist/vendor/GLFW"
+
 project "Mist"
 	location "Mist"
 	kind "SharedLib"
@@ -31,12 +36,20 @@ project "Mist"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
+		buildoptions "/MDd"
 		systemversion "latest"
 
 		defines
