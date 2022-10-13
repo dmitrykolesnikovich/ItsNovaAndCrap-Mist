@@ -19,6 +19,9 @@ project "Mist"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "mstpch.h"
+	pchsource "Mist/src/mstpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -49,15 +52,15 @@ project "Mist"
 		}
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG"
+		defines "MST_DEBUG"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "HZ_RELEASE"
+		defines "MST_RELEASE"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "HZ_DIST"
+		defines "MST_DIST"
 		optimize "On"
 
 project "Sandbox"
@@ -96,13 +99,13 @@ project "Sandbox"
 		}
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG"
+		defines "MST_DEBUG"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "HZ_RELEASE"
+		defines "MST_RELEASE"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "HZ_DIST"
+		defines "MST_DIST"
 		optimize "On"

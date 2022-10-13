@@ -4,6 +4,9 @@
     <Filter Include="Mist">
       <UniqueIdentifier>{A216897C-8E4D-8A0D-373A-70102350060F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mist\Events">
+      <UniqueIdentifier>{46B8D2DD-B26D-4BD3-3B62-45AAA71642D7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Mist.h" />
@@ -16,9 +19,22 @@
     <ClInclude Include="src\Mist\EntryPoint.h">
       <Filter>Mist</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mist\Events\ApplicationEvent.h">
+      <Filter>Mist\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Events\Event.h">
+      <Filter>Mist\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Events\KeyEvent.h">
+      <Filter>Mist\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Events\MouseEvent.h">
+      <Filter>Mist\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mist\Log.h">
       <Filter>Mist</Filter>
     </ClInclude>
+    <ClInclude Include="src\mstpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mist\Application.cpp">
@@ -27,5 +43,6 @@
     <ClCompile Include="src\Mist\Log.cpp">
       <Filter>Mist</Filter>
     </ClCompile>
+    <ClCompile Include="src\mstpch.cpp" />
   </ItemGroup>
 </Project>
