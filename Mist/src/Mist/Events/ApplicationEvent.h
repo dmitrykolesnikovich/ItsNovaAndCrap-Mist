@@ -56,6 +56,13 @@ namespace Mist {
 	public:
 		WindowCloseEvent() {}
 
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "WindowCloseEvent";
+			return ss.str();
+		}
+
 		EVENT_CLASS_TYPE(WindowClose)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
@@ -64,6 +71,13 @@ namespace Mist {
 	{
 	public:
 		WindowFocusEvent() {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "WindowFocusEvent";
+			return ss.str();
+		}
 
 		EVENT_CLASS_TYPE(WindowFocus)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
@@ -74,6 +88,13 @@ namespace Mist {
 	public:
 		WindowLostFocusEvent() {}
 
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "WindowLostFocusEvent";
+			return ss.str();
+		}
+
 		EVENT_CLASS_TYPE(WindowLostFocus)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
@@ -82,6 +103,13 @@ namespace Mist {
 	{
 	public:
 		AppTickEvent() {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "AppTickEvent";
+			return ss.str();
+		}
 
 		EVENT_CLASS_TYPE(AppTick)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
@@ -92,6 +120,13 @@ namespace Mist {
 	public:
 		AppUpdateEvent() {}
 
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "AppUpdateEvent";
+			return ss.str();
+		}
+
 		EVENT_CLASS_TYPE(AppUpdate)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
@@ -100,6 +135,13 @@ namespace Mist {
 	{
 	public:
 		AppRenderEvent() {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "AppRenderEvent";
+			return ss.str();
+		}
 
 		EVENT_CLASS_TYPE(AppRender)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)

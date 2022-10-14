@@ -6,7 +6,7 @@
 
 extern Mist::Application* Mist::CreateApplication();
 
-int main()
+int main(int argc, char** argv)
 {
 	Mist::Log::Init();
 	MST_CORE_WARN("Initialized Log!");

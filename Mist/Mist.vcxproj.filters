@@ -37,6 +37,12 @@
     <ClInclude Include="src\Mist\Events\MouseEvent.h">
       <Filter>Mist\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mist\Layer.h">
+      <Filter>Mist</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\LayerStack.h">
+      <Filter>Mist</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mist\Log.h">
       <Filter>Mist</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mist\Application.cpp">
+      <Filter>Mist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mist\Layer.cpp">
+      <Filter>Mist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mist\LayerStack.cpp">
       <Filter>Mist</Filter>
     </ClCompile>
     <ClCompile Include="src\Mist\Log.cpp">

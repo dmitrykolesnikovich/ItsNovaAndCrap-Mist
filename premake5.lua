@@ -49,7 +49,6 @@ project "Mist"
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		buildoptions "/MDd"
 		systemversion "latest"
 
 		defines
@@ -66,14 +65,17 @@ project "Mist"
 
 	filter "configurations:Debug"
 		defines "MST_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MST_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MST_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
