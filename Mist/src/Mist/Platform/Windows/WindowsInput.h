@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Mist\Input.h"
+#include "Mist\Input\Input.h"
 
 namespace Mist {
 

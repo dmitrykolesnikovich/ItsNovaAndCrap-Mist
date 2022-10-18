@@ -3,9 +3,10 @@
 
 #include "Events\ApplicationEvent.h"
 #include "Log.h"
-//#include "Input.h"
+#include "Input/Input.h"
 
 #include <glad\glad.h>
+#include <glm\glm.hpp>
 
 namespace Mist {
 
@@ -58,7 +59,7 @@ namespace Mist {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(MST_BIND_EVENT_FN(Application::OnWindowClose));
 
-		MST_CORE_TRACE("{0}", e);
+		//MST_CORE_TRACE("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{

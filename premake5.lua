@@ -15,6 +15,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Mist/vendor/GLFW/include"
 IncludeDir["Glad"] = "Mist/vendor/Glad/include"
 IncludeDir["ImGui"] = "Mist/vendor/imgui"
+IncludeDir["GLM"] = "Mist/vendor/GLM/include"
 
 include "Mist/vendor/GLFW"
 include "Mist/vendor/Glad"
@@ -34,7 +35,9 @@ project "Mist"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/GLM/include/glm/**.hpp",
+		"%{prj.name}/vendor/GLM/include/glm/**.inl"
 	}
 
 	includedirs
@@ -43,7 +46,8 @@ project "Mist"
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.GLM}"
 	}
 
 	links
@@ -63,6 +67,7 @@ project "Mist"
 		{
 			"MST_PLATFORM_WINDOWS",
 			"MST_BUILD_DLL",
+			"MST_USE_GLFW_KEYCODES",
 			"GLFW_INCLUDE_NONE",
 			"_CRT_SECURE_NO_WARNINGS",
 			"_WINDLL"
@@ -105,7 +110,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Mist/vendor/spdlog/include",
-		"Mist/src"
+		"Mist/src",
+		"%{IncludeDir.GLM}"
 	}
 
 	links
@@ -121,6 +127,7 @@ project "Sandbox"
 		defines
 		{
 			"MST_PLATFORM_WINDOWS",
+			"MST_USE_GLFW_KEYCODES",
 			"_CRT_SECURE_NO_WARNINGS"
 		}
 

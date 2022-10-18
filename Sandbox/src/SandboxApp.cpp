@@ -7,13 +7,22 @@ public:
 		: Layer("Example")
 	{
 	}
-
+	
 	void OnUpdate() override
 	{
+		if (Mist::Input::IsKeyPressed(MST_KEY_TAB))
+			MST_TRACE("Tab key is pressed!! (OnUpdate)");
 	}
 
 	void OnEvent(Mist::Event& e) override
 	{
+		if (e.GetEventType() == Mist::EventType::KeyPressed)
+		{
+			Mist::KeyPressedEvent& event = (Mist::KeyPressedEvent&)e;
+			if (event.GetKeyCode() == MST_KEY_TAB)
+				MST_TRACE("Tab key is pressed!! (OnEvent)");
+			MST_TRACE("{0}", (char)event.GetKeyCode());
+		}
 	}
 
 };
