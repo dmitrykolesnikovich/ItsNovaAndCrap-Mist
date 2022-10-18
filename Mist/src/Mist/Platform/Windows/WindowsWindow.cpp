@@ -5,6 +5,9 @@
 #include "Mist\Events\KeyEvent.h"
 #include "Mist\Events\MouseEvent.h"
 
+#include <glad\glad.h>
+#include <GLFW\glfw3.h>
+
 namespace Mist {
 
 	static bool s_GLFWInitialized = false;
@@ -41,6 +44,8 @@ namespace Mist {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		MST_CORE_ASSERT(status, "Couldn't Initialize Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -141,6 +146,14 @@ namespace Mist {
 				KeyPressedEvent event(key, repeats);
 				data.EventCallback(event);
 			}
+		});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+			KeyTypedEvent event(keycode);
+			data.EventCallback(event);
 		});
 
 	}

@@ -18,7 +18,6 @@ namespace Mist {
 		int m_KeyCode;
 	};
 
-
 	class MIST_API KeyPressedEvent : public KeyEvent
 	{
 	public:
@@ -53,6 +52,22 @@ namespace Mist {
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)
+	};
+
+	class MIST_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
 	};
 
 }

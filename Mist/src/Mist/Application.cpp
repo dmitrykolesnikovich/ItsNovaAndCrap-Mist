@@ -3,13 +3,19 @@
 
 #include "Events\ApplicationEvent.h"
 #include "Log.h"
+//#include "Input.h"
 
-#include <GLFW\glfw3.h>
+#include <glad\glad.h>
 
 namespace Mist {
 
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
+		MST_CORE_ASSERT(!s_Instance, "An application already exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(MST_BIND_EVENT_FN(Application::OnEvent));
 	}
@@ -21,11 +27,13 @@ namespace Mist {
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	void Application::Run()
@@ -37,6 +45,9 @@ namespace Mist {
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
+			//auto [x, y] = Input::GetMousePosition();
+			//MST_TRACE("{0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}

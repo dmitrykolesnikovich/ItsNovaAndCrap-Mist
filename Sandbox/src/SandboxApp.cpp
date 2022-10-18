@@ -10,7 +10,6 @@ public:
 
 	void OnUpdate() override
 	{
-		MST_INFO("ExampleLayer::OnUpdate");
 	}
 
 	void OnEvent(Mist::Event& e) override
@@ -25,6 +24,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Mist::ImGuiLayer());
 	}
 
 	~Sandbox()

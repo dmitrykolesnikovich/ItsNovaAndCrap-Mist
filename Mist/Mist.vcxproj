@@ -79,8 +79,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>mstpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;_WINDLL;MST_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -103,8 +103,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>mstpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;_WINDLL;MST_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -131,8 +131,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>mstpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;_WINDLL;MST_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -163,18 +163,25 @@
     <ClInclude Include="src\Mist\Events\Event.h" />
     <ClInclude Include="src\Mist\Events\KeyEvent.h" />
     <ClInclude Include="src\Mist\Events\MouseEvent.h" />
+    <ClInclude Include="src\Mist\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Mist\Input.h" />
     <ClInclude Include="src\Mist\Layer.h" />
     <ClInclude Include="src\Mist\LayerStack.h" />
     <ClInclude Include="src\Mist\Log.h" />
+    <ClInclude Include="src\Mist\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Mist\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Mist\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Mist\Window.h" />
     <ClInclude Include="src\mstpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mist\Application.cpp" />
+    <ClCompile Include="src\Mist\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Mist\Layer.cpp" />
     <ClCompile Include="src\Mist\LayerStack.cpp" />
     <ClCompile Include="src\Mist\Log.cpp" />
+    <ClCompile Include="src\Mist\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Mist\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Mist\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\mstpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -183,6 +190,12 @@
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\Glad\Glad.vcxproj">
+      <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

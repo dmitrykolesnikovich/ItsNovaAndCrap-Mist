@@ -13,8 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Mist/vendor/GLFW/include"
+IncludeDir["Glad"] = "Mist/vendor/Glad/include"
+IncludeDir["ImGui"] = "Mist/vendor/imgui"
 
 include "Mist/vendor/GLFW"
+include "Mist/vendor/Glad"
+include "Mist/vendor/imgui"
 
 project "Mist"
 	location "Mist"
@@ -37,12 +41,16 @@ project "Mist"
 	{
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -55,6 +63,8 @@ project "Mist"
 		{
 			"MST_PLATFORM_WINDOWS",
 			"MST_BUILD_DLL",
+			"GLFW_INCLUDE_NONE",
+			"_CRT_SECURE_NO_WARNINGS",
 			"_WINDLL"
 		}
 
@@ -110,7 +120,8 @@ project "Sandbox"
 
 		defines
 		{
-			"MST_PLATFORM_WINDOWS"
+			"MST_PLATFORM_WINDOWS",
+			"_CRT_SECURE_NO_WARNINGS"
 		}
 
 	filter "configurations:Debug"
