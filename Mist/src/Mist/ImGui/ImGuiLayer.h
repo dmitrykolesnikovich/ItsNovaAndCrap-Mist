@@ -14,26 +14,13 @@ namespace Mist {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& e);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
+
+		void Begin();
+		void End();
 	private:
-		bool OnWindowResizeEvent(WindowResizeEvent& e);
-		bool OnWindowMovedEvent(WindowMovedEvent& e);
-		bool OnWindowCloseEvent(WindowCloseEvent& e);
-		bool OnWindowFocusEvent(WindowFocusEvent& e);
-		bool OnWindowLostFocusEvent(WindowLostFocusEvent& e);
-		
-		bool OnKeyPressedEvent(KeyPressedEvent& e);
-		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-		bool OnKeyTypedEvent(KeyTypedEvent& e);
-
-		bool OnMouseMovedEvent(MouseMovedEvent& e);
-		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-
 		float m_Time = 0.0f;
 	};
 

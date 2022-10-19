@@ -1,5 +1,7 @@
 #include <Mist.h>
 
+#include <imgui.h>
+
 class ExampleLayer : public Mist::Layer
 {
 public:
@@ -14,6 +16,13 @@ public:
 			MST_TRACE("Tab key is pressed!! (OnUpdate)");
 	}
 
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("Mist Test");
+		ImGui::Text("Hello Mist Engine!");
+		ImGui::End();
+	}
+
 	void OnEvent(Mist::Event& e) override
 	{
 		if (e.GetEventType() == Mist::EventType::KeyPressed)
@@ -21,7 +30,6 @@ public:
 			Mist::KeyPressedEvent& event = (Mist::KeyPressedEvent&)e;
 			if (event.GetKeyCode() == MST_KEY_TAB)
 				MST_TRACE("Tab key is pressed!! (OnEvent)");
-			MST_TRACE("{0}", (char)event.GetKeyCode());
 		}
 	}
 
@@ -33,7 +41,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Mist::ImGuiLayer());
 	}
 
 	~Sandbox()

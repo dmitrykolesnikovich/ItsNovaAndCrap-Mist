@@ -78,8 +78,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_USE_GLFW_KEYCODES;_CRT_SECURE_NO_WARNINGS;MST_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Mist\vendor\spdlog\include;..\Mist\src;..\Mist\vendor\GLM\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllimport);MST_PLATFORM_WINDOWS;MST_USE_GLFW_KEYCODES;_CRT_SECURE_NO_WARNINGS;MST_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Mist\vendor\spdlog\include;..\Mist\src;..\Mist\vendor\GLM\include;..\Mist\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -95,8 +95,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_USE_GLFW_KEYCODES;_CRT_SECURE_NO_WARNINGS;MST_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Mist\vendor\spdlog\include;..\Mist\src;..\Mist\vendor\GLM\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllimport);MST_PLATFORM_WINDOWS;MST_USE_GLFW_KEYCODES;_CRT_SECURE_NO_WARNINGS;MST_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Mist\vendor\spdlog\include;..\Mist\src;..\Mist\vendor\GLM\include;..\Mist\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -116,8 +116,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_USE_GLFW_KEYCODES;_CRT_SECURE_NO_WARNINGS;MST_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Mist\vendor\spdlog\include;..\Mist\src;..\Mist\vendor\GLM\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllimport);MST_PLATFORM_WINDOWS;MST_USE_GLFW_KEYCODES;_CRT_SECURE_NO_WARNINGS;MST_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Mist\vendor\spdlog\include;..\Mist\src;..\Mist\vendor\GLM\include;..\Mist\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

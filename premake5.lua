@@ -65,6 +65,7 @@ project "Mist"
 
 		defines
 		{
+			"IMGUI_API=__declspec(dllexport)",
 			"MST_PLATFORM_WINDOWS",
 			"MST_BUILD_DLL",
 			"MST_USE_GLFW_KEYCODES",
@@ -111,7 +112,8 @@ project "Sandbox"
 	{
 		"Mist/vendor/spdlog/include",
 		"Mist/src",
-		"%{IncludeDir.GLM}"
+		"%{IncludeDir.GLM}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
@@ -126,6 +128,7 @@ project "Sandbox"
 
 		defines
 		{
+			"IMGUI_API=__declspec(dllimport)",
 			"MST_PLATFORM_WINDOWS",
 			"MST_USE_GLFW_KEYCODES",
 			"_CRT_SECURE_NO_WARNINGS"

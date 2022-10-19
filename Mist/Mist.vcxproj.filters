@@ -19,9 +19,6 @@
     <Filter Include="src\Mist\Platform">
       <UniqueIdentifier>{8D5EB530-F974-B3C6-42EC-3EE8AE41844E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Mist\Platform\OpenGL">
-      <UniqueIdentifier>{2187DEE1-0DAC-2D62-36F7-12F2227B2C80}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Mist\Platform\Windows">
       <UniqueIdentifier>{C745CB75-3308-FFFF-7CB8-8D8CE8B9D7DD}</UniqueIdentifier>
     </Filter>
@@ -98,9 +95,6 @@
     </ClInclude>
     <ClInclude Include="src\Mist\Log.h">
       <Filter>src\Mist</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Mist\Platform\OpenGL\ImGuiOpenGLRenderer.h">
-      <Filter>src\Mist\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Mist\Platform\Windows\WindowsInput.h">
       <Filter>src\Mist\Platform\Windows</Filter>
@@ -1364,6 +1358,9 @@
     <ClCompile Include="src\Mist\Application.cpp">
       <Filter>src\Mist</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mist\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Mist\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Mist\ImGui\ImGuiLayer.cpp">
       <Filter>src\Mist\ImGui</Filter>
     </ClCompile>
@@ -1375,9 +1372,6 @@
     </ClCompile>
     <ClCompile Include="src\Mist\Log.cpp">
       <Filter>src\Mist</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Mist\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
-      <Filter>src\Mist\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Mist\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Mist\Platform\Windows</Filter>

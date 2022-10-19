@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>mstpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;MST_USE_GLFW_KEYCODES;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);MST_PLATFORM_WINDOWS;MST_BUILD_DLL;MST_USE_GLFW_KEYCODES;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\GLM\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -103,7 +103,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>mstpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;MST_USE_GLFW_KEYCODES;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);MST_PLATFORM_WINDOWS;MST_BUILD_DLL;MST_USE_GLFW_KEYCODES;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\GLM\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -131,7 +131,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>mstpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>MST_PLATFORM_WINDOWS;MST_BUILD_DLL;MST_USE_GLFW_KEYCODES;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>IMGUI_API=__declspec(dllexport);MST_PLATFORM_WINDOWS;MST_BUILD_DLL;MST_USE_GLFW_KEYCODES;GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;_WINDLL;MST_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\GLM\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -171,7 +171,6 @@
     <ClInclude Include="src\Mist\Layer.h" />
     <ClInclude Include="src\Mist\LayerStack.h" />
     <ClInclude Include="src\Mist\Log.h" />
-    <ClInclude Include="src\Mist\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Mist\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Mist\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Mist\Window.h" />
@@ -594,11 +593,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mist\Application.cpp" />
+    <ClCompile Include="src\Mist\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Mist\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Mist\Layer.cpp" />
     <ClCompile Include="src\Mist\LayerStack.cpp" />
     <ClCompile Include="src\Mist\Log.cpp" />
-    <ClCompile Include="src\Mist\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Mist\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Mist\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\mstpch.cpp">
