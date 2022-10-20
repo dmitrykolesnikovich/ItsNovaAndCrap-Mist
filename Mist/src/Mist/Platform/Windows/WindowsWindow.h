@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Mist\Window.h"
+#include "Mist\Renderer\GraphicsContext.h"
 
 struct GLFWwindow;
 
@@ -27,6 +28,7 @@ namespace Mist {
 		virtual void Shutdown();
 
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
