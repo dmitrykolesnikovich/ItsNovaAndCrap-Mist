@@ -1,10 +1,14 @@
 #pragma once
 
 #ifdef MST_PLATFORM_WINDOWS
-	#ifdef MST_BUILD_DLL
-		#define MIST_API __declspec(dllexport)
+	#ifdef MST_DYNAMIC_LINK
+		#ifdef MST_BUILD_DLL
+			#define MIST_API __declspec(dllexport)
+		#else
+			#define MIST_API __declspec(dllimport)
+		#endif
 	#else
-		#define MIST_API __declspec(dllimport)
+		#define MIST_API 
 	#endif
 #else
 	#error Mist currently only supports Windows!

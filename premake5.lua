@@ -23,8 +23,10 @@ include "Mist/vendor/imgui"
 
 project "Mist"
 	location "Mist"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	staticruntime "On"
+	cppdialect "C++17"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -50,6 +52,11 @@ project "Mist"
 		"%{IncludeDir.GLM}"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	links
 	{
 		"GLFW",
@@ -59,45 +66,36 @@ project "Mist"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
 		{
-			"IMGUI_API=__declspec(dllexport)",
 			"MST_PLATFORM_WINDOWS",
-			"MST_BUILD_DLL",
 			"MST_USE_GLFW_KEYCODES",
-			"GLFW_INCLUDE_NONE",
-			"_CRT_SECURE_NO_WARNINGS",
-			"_WINDLL"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"
 		defines "MST_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "MST_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "MST_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -116,22 +114,23 @@ project "Sandbox"
 		"%{IncludeDir.ImGui}"
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	links
 	{
 		"Mist"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
 		{
-			"IMGUI_API=__declspec(dllimport)",
 			"MST_PLATFORM_WINDOWS",
-			"MST_USE_GLFW_KEYCODES",
-			"_CRT_SECURE_NO_WARNINGS"
+			"MST_USE_GLFW_KEYCODES"
 		}
 
 	filter "configurations:Debug"
