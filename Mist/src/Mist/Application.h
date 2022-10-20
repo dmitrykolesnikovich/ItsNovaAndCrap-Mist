@@ -7,6 +7,8 @@
 #include "Events\Event.h"
 #include "Events\ApplicationEvent.h"
 #include "Mist\ImGui\ImGuiLayer.h"
+#include "Mist\Renderer\Shader.h"
+#include "Mist\Renderer\Buffer.h"
 
 namespace Mist {
 
@@ -33,7 +35,10 @@ namespace Mist {
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		unsigned int m_VertexArray;
+		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	};
 
 	// To be defined in client
