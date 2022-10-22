@@ -19,8 +19,14 @@
     <Filter Include="src\Mist\Platform">
       <UniqueIdentifier>{8D5EB530-F974-B3C6-42EC-3EE8AE41844E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Mist\Platform\OpenGL">
+      <UniqueIdentifier>{2187DEE1-0DAC-2D62-36F7-12F2227B2C80}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Mist\Platform\Windows">
       <UniqueIdentifier>{C745CB75-3308-FFFF-7CB8-8D8CE8B9D7DD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Mist\Renderer">
+      <UniqueIdentifier>{DF65920B-4B7C-90A1-94F3-1BC300496129}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -96,11 +102,29 @@
     <ClInclude Include="src\Mist\Log.h">
       <Filter>src\Mist</Filter>
     </ClInclude>
+    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Mist\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Mist\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Mist\Platform\Windows\WindowsInput.h">
       <Filter>src\Mist\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Mist\Platform\Windows\WindowsWindow.h">
       <Filter>src\Mist\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Renderer\Buffer.h">
+      <Filter>src\Mist\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Renderer\GraphicsContext.h">
+      <Filter>src\Mist\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Renderer\Renderer.h">
+      <Filter>src\Mist\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mist\Renderer\Shader.h">
+      <Filter>src\Mist\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Mist\Window.h">
       <Filter>src\Mist</Filter>
@@ -1353,12 +1377,8 @@
     <ClInclude Include="vendor\GLM\include\glm\vector_relational.hpp">
       <Filter>vendor\GLM\include\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mist\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Mist\Renderer\Shader.h" />
-    <ClInclude Include="src\Mist\Renderer\Buffer.h" />
-    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Mist\Renderer\Renderer.h" />
+    <ClInclude Include="src\Mist\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mist\Application.cpp">
@@ -1379,19 +1399,31 @@
     <ClCompile Include="src\Mist\Log.cpp">
       <Filter>src\Mist</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Mist\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Mist\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Mist\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Mist\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Mist\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Mist\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mist\Renderer\Buffer.cpp">
+      <Filter>src\Mist\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mist\Renderer\Renderer.cpp">
+      <Filter>src\Mist\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mist\Renderer\Shader.cpp">
+      <Filter>src\Mist\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\mstpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Mist\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Mist\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Mist\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Mist\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>

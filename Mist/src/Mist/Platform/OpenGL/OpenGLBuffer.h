@@ -13,9 +13,13 @@ namespace Mist {
 		virtual void Bind() const;
 		virtual void Unbind() const;
 
+		virtual const BufferLayout& GetLayout() const override;
+		virtual void SetLayout(const BufferLayout& layout) override;
+
 		inline uint32_t GetID() const { return m_RendererID; }
 	private:
 		uint32_t m_RendererID;
+		BufferLayout m_Layout;
 	};
 
 	class OpenGLIndexBuffer : public IndexBuffer
@@ -26,6 +30,7 @@ namespace Mist {
 
 		virtual void Bind() const;
 		virtual void Unbind() const;
+
 		virtual uint32_t GetCount() const { return m_Count; }
 	private:
 		uint32_t m_RendererID;

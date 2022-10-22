@@ -143,8 +143,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Mist.h" />
     <ClInclude Include="src\Mist\Application.h" />
     <ClInclude Include="src\Mist\Core.h" />
@@ -161,12 +159,16 @@
     <ClInclude Include="src\Mist\Layer.h" />
     <ClInclude Include="src\Mist\LayerStack.h" />
     <ClInclude Include="src\Mist\Log.h" />
+    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Mist\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Mist\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Mist\Renderer\Buffer.h" />
     <ClInclude Include="src\Mist\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Mist\Renderer\Renderer.h" />
     <ClInclude Include="src\Mist\Renderer\Shader.h" />
+    <ClInclude Include="src\Mist\Renderer\VertexArray.h" />
     <ClInclude Include="src\Mist\Window.h" />
     <ClInclude Include="src\mstpch.h" />
     <ClInclude Include="vendor\GLM\include\glm\common.hpp" />
@@ -594,11 +596,13 @@
     <ClCompile Include="src\Mist\Log.cpp" />
     <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Mist\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Mist\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Mist\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Mist\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Mist\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Mist\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\mstpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

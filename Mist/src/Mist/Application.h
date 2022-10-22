@@ -9,6 +9,7 @@
 #include "Mist\ImGui\ImGuiLayer.h"
 #include "Mist\Renderer\Shader.h"
 #include "Mist\Renderer\Buffer.h"
+#include "Mist\Renderer\VertexArray.h"
 
 namespace Mist {
 
@@ -35,10 +36,11 @@ namespace Mist {
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
+		std::shared_ptr<Shader> m_BlueShader;
+		std::shared_ptr<VertexArray> m_SquareVA;
 	};
 
 	// To be defined in client
