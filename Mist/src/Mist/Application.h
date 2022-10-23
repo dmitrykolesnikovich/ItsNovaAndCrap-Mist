@@ -11,6 +11,7 @@
 #include "Mist\Renderer\Buffer.h"
 #include "Mist\Renderer\VertexArray.h"
 #include "Mist\Renderer\OrthographicCamera.h"
+#include "Mist\Timestep.h"
 
 namespace Mist {
 
@@ -36,14 +37,7 @@ namespace Mist {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		float m_LastFrameTime = 0.0f;
 	};
 
 	// To be defined in client

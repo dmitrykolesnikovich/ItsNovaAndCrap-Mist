@@ -1383,6 +1383,7 @@
     <ClInclude Include="src\Mist\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Mist\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Mist\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mist\Application.cpp">

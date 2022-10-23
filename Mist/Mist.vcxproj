@@ -173,6 +173,7 @@
     <ClInclude Include="src\Mist\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Mist\Renderer\Shader.h" />
     <ClInclude Include="src\Mist\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Mist\Timestep.h" />
     <ClInclude Include="src\Mist\Window.h" />
     <ClInclude Include="src\mstpch.h" />
     <ClInclude Include="vendor\GLM\include\glm\common.hpp" />
