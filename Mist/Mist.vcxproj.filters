@@ -1379,6 +1379,10 @@
     </ClInclude>
     <ClInclude Include="src\Mist\Renderer\VertexArray.h" />
     <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Mist\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Mist\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Mist\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mist\Application.cpp">
@@ -1425,5 +1429,9 @@
     </ClCompile>
     <ClCompile Include="src\Mist\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Mist\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Mist\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Mist\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

@@ -10,10 +10,10 @@ namespace Mist {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: MST_CORE_ASSERT(false, "RendererAPI::None is currently not supported! (VertexBuffer::Create)"); return nullptr;
-		case RendererAPI::Vulkan: MST_CORE_ASSERT(false, "RendererAPI::Vulkan is currently not supported! (VertexBuffer::Create)"); return nullptr;
-		case RendererAPI::DirectX: MST_CORE_ASSERT(false, "RendererAPI::DirectX is currently not supported! (VertexBuffer::Create)"); return nullptr;
-		case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
+		case RendererAPI::API::None: MST_CORE_ASSERT(false, "RendererAPI::None is currently not supported! (VertexBuffer::Create)"); return nullptr;
+		case RendererAPI::API::Vulkan: MST_CORE_ASSERT(false, "RendererAPI::Vulkan is currently not supported! (VertexBuffer::Create)"); return nullptr;
+		case RendererAPI::API::DirectX: MST_CORE_ASSERT(false, "RendererAPI::DirectX is currently not supported! (VertexBuffer::Create)"); return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
 
 		MST_CORE_ASSERT(false, "Invalid RendererAPI! (VertexBuffer::Create)");
@@ -24,10 +24,10 @@ namespace Mist {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: MST_CORE_ASSERT(false, "RendererAPI::None is currently not supported! (IndexBuffer::Create)"); return nullptr;
-		case RendererAPI::Vulkan: MST_CORE_ASSERT(false, "RendererAPI::Vulkan is currently not supported! (IndexBuffer::Create)"); return nullptr;
-		case RendererAPI::DirectX: MST_CORE_ASSERT(false, "RendererAPI::DirectX is currently not supported! (IndexBuffer::Create)"); return nullptr;
-		case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, count);
+		case RendererAPI::API::None: MST_CORE_ASSERT(false, "RendererAPI::None is currently not supported! (IndexBuffer::Create)"); return nullptr;
+		case RendererAPI::API::Vulkan: MST_CORE_ASSERT(false, "RendererAPI::Vulkan is currently not supported! (IndexBuffer::Create)"); return nullptr;
+		case RendererAPI::API::DirectX: MST_CORE_ASSERT(false, "RendererAPI::DirectX is currently not supported! (IndexBuffer::Create)"); return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, count);
 		}
 
 		MST_CORE_ASSERT(false, "Invalid RendererAPI! (IndexBuffer::Create)");

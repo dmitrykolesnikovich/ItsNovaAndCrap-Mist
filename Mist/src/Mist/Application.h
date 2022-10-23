@@ -10,6 +10,7 @@
 #include "Mist\Renderer\Shader.h"
 #include "Mist\Renderer\Buffer.h"
 #include "Mist\Renderer\VertexArray.h"
+#include "Mist\Renderer\OrthographicCamera.h"
 
 namespace Mist {
 
@@ -41,6 +42,8 @@ namespace Mist {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	};
 
 	// To be defined in client
