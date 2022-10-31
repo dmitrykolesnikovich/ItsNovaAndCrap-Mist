@@ -6,7 +6,7 @@ class ExampleLayer : public Mist::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_CameraRotation(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_CameraRotation(0.0f), m_SquarePosition(0.0f)
 	{
 		m_VertexArray.reset(Mist::VertexArray::Create());
 
@@ -33,10 +33,10 @@ public:
 		m_SquareVA.reset(Mist::VertexArray::Create());
 
 		float squareVertices[4 * 3] = {
-			-0.75f, -0.75f, 0.0f,
-			 0.75f, -0.75f, 0.0f,
-			 0.75f,  0.75f, 0.0f,
-			-0.75f,  0.75f, 0.0f
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
 		std::shared_ptr<Mist::VertexBuffer> squareVB;
@@ -60,13 +60,14 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec4 v_Color;
 
 			void main()
 			{
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -85,37 +86,38 @@ public:
 
 		m_Shader.reset(new Mist::Shader(vertexSrc, fragmentSrc));
 
-		std::string blueVertexSrc = R"(
+		std::string flatColorVertexSrc = R"(
 			#version 330 core
 
 			layout(location = 0) in vec3 a_Position;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			void main()
 			{
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
-		std::string blueFragmentSrc = R"(
+		std::string flatColorFragmentSrc = R"(
 			#version 330 core
 				
 			out vec4 color;
 
+			uniform vec4 u_Color;
+
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = u_Color;
 			}
 		)";
 
-		m_BlueShader.reset(new Mist::Shader(blueVertexSrc, blueFragmentSrc));
+		m_FlatColorShader.reset(new Mist::Shader(flatColorVertexSrc, flatColorFragmentSrc));
 	}
 	
 	void OnUpdate(Mist::Timestep ts) override
 	{
-		MST_TRACE("Delta Time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
-
 		if (Mist::Input::IsKeyPressed(MST_KEY_LEFT) || Mist::Input::IsKeyPressed(MST_KEY_A))
 			m_CameraPosition.x -= m_CameraSpeed * ts;
 
@@ -145,8 +147,25 @@ public:
 
 		Mist::Renderer::BeginScene(m_Camera);
 
-		Mist::Renderer::Submit(m_BlueShader, m_SquareVA);
-		Mist::Renderer::Submit(m_Shader, m_VertexArray);
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
+		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
+		for (int y = 0; y < 20; y++)
+		{
+			for (int x = 0; x < 20; x++)
+			{
+				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				if (x % 2 == 0)
+					m_FlatColorShader->UploadUniformVec4f("u_Color", redColor);
+				else
+					m_FlatColorShader->UploadUniformVec4f("u_Color", blueColor);
+				Mist::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
+			}
+		}
+
+		//Mist::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Mist::Renderer::EndScene();
 	}
@@ -183,7 +202,11 @@ public:
 		{
 			m_CameraPosition = { 0, 0, 0 };
 			m_CameraRotation = 0.0f;
+			m_SquarePosition = { 0, 0, 0 };
 		}
+
+		if (Mist::Input::IsKeyPressed(MST_KEY_O))
+			m_SquarePosition = { 0, 0, 0 };
 
 		return false;
 	}
@@ -205,14 +228,16 @@ private:
 	std::shared_ptr<Mist::Shader> m_Shader;
 	std::shared_ptr<Mist::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Mist::Shader> m_BlueShader;
+	std::shared_ptr<Mist::Shader> m_FlatColorShader;
 	std::shared_ptr<Mist::VertexArray> m_SquareVA;
 
 	Mist::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraRotation;
-	float m_CameraSpeed = 1.0f;
-	float m_CameraRotationSpeed = 10.0f;
+	float m_CameraSpeed = 5.0f;
+	float m_CameraRotationSpeed = 180.0f;
+	glm::vec3 m_SquarePosition;
+	float m_SquareSpeed = 1.0f;
 };
 
 class Sandbox : public Mist::Application
