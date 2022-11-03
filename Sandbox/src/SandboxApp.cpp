@@ -1,6 +1,7 @@
 #include <Mist.h>
 
 #include <imgui.h>
+#include "Mist\Platform\OpenGL\OpenGLShader.h"
 
 class ExampleLayer : public Mist::Layer
 {
@@ -84,7 +85,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(new Mist::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(Mist::Shader::Create(vertexSrc, fragmentSrc));
 
 		std::string flatColorVertexSrc = R"(
 			#version 330 core
@@ -105,15 +106,15 @@ public:
 				
 			out vec4 color;
 
-			uniform vec4 u_Color;
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				color = u_Color;
+				color = vec4(u_Color, 1.0);
 			}
 		)";
 
-		m_FlatColorShader.reset(new Mist::Shader(flatColorVertexSrc, flatColorFragmentSrc));
+		m_FlatColorShader.reset(Mist::Shader::Create(flatColorVertexSrc, flatColorFragmentSrc));
 	}
 	
 	void OnUpdate(Mist::Timestep ts) override
@@ -149,8 +150,8 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
-		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
+		std::dynamic_pointer_cast<Mist::OpenGLShader>(m_FlatColorShader)->Bind();
+
 		for (int y = 0; y < 20; y++)
 		{
 			for (int x = 0; x < 20; x++)
@@ -158,9 +159,9 @@ public:
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
 				if (x % 2 == 0)
-					m_FlatColorShader->UploadUniformVec4f("u_Color", redColor);
+					std::dynamic_pointer_cast<Mist::OpenGLShader>(m_FlatColorShader)->UploadUniformVec3f("u_Color", m_SquareRedColor);
 				else
-					m_FlatColorShader->UploadUniformVec4f("u_Color", blueColor);
+					std::dynamic_pointer_cast<Mist::OpenGLShader>(m_FlatColorShader)->UploadUniformVec3f("u_Color", m_SquareBlueColor);
 				Mist::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
@@ -172,6 +173,10 @@ public:
 
 	void OnImGuiRender() override
 	{
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Red Color", glm::value_ptr(m_SquareRedColor));
+		ImGui::ColorEdit3("Square Blue Color", glm::value_ptr(m_SquareBlueColor));
+		ImGui::End();
 	}
 
 	void OnEvent(Mist::Event& e) override
@@ -238,6 +243,8 @@ private:
 	float m_CameraRotationSpeed = 180.0f;
 	glm::vec3 m_SquarePosition;
 	float m_SquareSpeed = 1.0f;
+	glm::vec3 m_SquareRedColor = { 0.8f, 0.2f, 0.3f };
+	glm::vec3 m_SquareBlueColor = { 0.2f, 0.3f, 0.8f };
 };
 
 class Sandbox : public Mist::Application

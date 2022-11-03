@@ -1384,6 +1384,7 @@
     <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Mist\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Mist\Timestep.h" />
+    <ClInclude Include="src\Mist\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Mist\Application.cpp">
@@ -1434,5 +1435,6 @@
     <ClCompile Include="src\Mist\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Mist\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Mist\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>
